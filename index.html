@@ -1,0 +1,1144 @@
+
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Լիլիթ & Վոլոդյա — 10.10.2026</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f8f3ed;
+      color: #493d35;
+      overflow-x: hidden;
+    }
+
+    button,
+    a {
+      font-family: inherit;
+    }
+
+    /* =========================
+       OPENING SCREEN
+       ========================= */
+
+    #gate {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #f8f3ed;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      transition:
+        opacity 1s ease,
+        visibility 1s ease;
+    }
+
+    #gate.open {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .wrap {
+      width: min(90%, 600px);
+      padding: 40px 20px;
+    }
+
+    .env {
+      width: 260px;
+      height: 180px;
+
+      margin: 0 auto 35px;
+
+      position: relative;
+
+      background: #eee3d5;
+      border: 1px solid #d6c4b1;
+
+      box-shadow:
+        0 15px 40px rgba(80, 60, 40, 0.12);
+    }
+
+    .flap {
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      width: 0;
+      height: 0;
+
+      border-left: 129px solid transparent;
+      border-right: 129px solid transparent;
+      border-top: 90px solid #e4d5c4;
+    }
+
+    .seal {
+      position: absolute;
+
+      left: 50%;
+      top: 50%;
+
+      transform: translate(-50%, -50%);
+
+      width: 65px;
+      height: 65px;
+
+      border-radius: 50%;
+
+      background: #8b6f5a;
+      color: white;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 17px;
+      letter-spacing: 2px;
+
+      box-shadow:
+        0 5px 15px rgba(60, 40, 20, 0.2);
+    }
+
+    .orn {
+      position: absolute;
+      z-index: 2;
+
+      color: #8b6f5a;
+      font-size: 32px;
+    }
+
+    .orn.a {
+      left: 15px;
+      bottom: 15px;
+    }
+
+    .orn.b {
+      right: 15px;
+      bottom: 15px;
+    }
+
+    h1,
+    h2,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: clamp(36px, 8vw, 58px);
+      font-weight: 400;
+      margin-bottom: 12px;
+      color: #493d35;
+    }
+
+    h2 {
+      font-size: clamp(30px, 6vw, 46px);
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: #493d35;
+    }
+
+    .date,
+    .heroDate {
+      letter-spacing: 5px;
+      color: #8b6f5a;
+      font-size: 15px;
+    }
+
+    button,
+    .btn {
+      display: inline-block;
+
+      margin-top: 30px;
+      padding: 14px 28px;
+
+      border: 1px solid #8b6f5a;
+
+      background: transparent;
+      color: #6f5745;
+
+      text-decoration: none;
+      cursor: pointer;
+
+      letter-spacing: 2px;
+
+      transition: all 0.3s ease;
+    }
+
+    button:hover,
+    .btn:hover {
+      background: #8b6f5a;
+      color: white;
+    }
+
+    /* =========================
+       HERO
+       ========================= */
+
+    .hero {
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      background:
+        radial-gradient(
+          circle at center,
+          #fffaf5 0%,
+          #eee3d5 100%
+        );
+
+      padding: 80px 20px;
+    }
+
+    .heroText {
+      animation: fadeUp 1.5s ease;
+    }
+
+    .kicker {
+      color: #9a7c63;
+      font-size: 12px;
+      letter-spacing: 4px;
+      margin-bottom: 18px;
+    }
+
+    .names {
+      font-size: clamp(45px, 10vw, 90px);
+      line-height: 1.1;
+      font-weight: 400;
+      margin-bottom: 25px;
+      color: #493d35;
+    }
+
+    /* =========================
+       GENERAL
+       ========================= */
+
+    section {
+      padding: 100px 20px;
+    }
+
+    .center {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .intro {
+      max-width: 650px;
+      margin: 0 auto;
+
+      line-height: 2;
+      font-size: 17px;
+
+      color: #65574d;
+    }
+
+    .divider {
+      margin: 35px 0;
+
+      color: #9a7c63;
+      font-size: 26px;
+    }
+
+    /* =========================
+       COUNTDOWN
+       ========================= */
+
+    .count {
+      display: flex;
+
+      justify-content: center;
+
+      gap: 40px;
+
+      flex-wrap: wrap;
+
+      margin-top: 40px;
+    }
+
+    .count > div {
+      min-width: 70px;
+    }
+
+    .num {
+      display: block;
+
+      font-size: 38px;
+
+      color: #6f5745;
+    }
+
+    .lbl {
+      display: block;
+
+      margin-top: 8px;
+
+      font-size: 10px;
+
+      letter-spacing: 2px;
+
+      color: #9a7c63;
+    }
+
+    /* =========================
+       STORY
+       ========================= */
+
+    .story {
+      background: #eee3d5;
+    }
+
+    .storyGrid {
+      max-width: 1100px;
+
+      margin: 0 auto;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+      gap: 60px;
+
+      align-items: center;
+    }
+
+    /* STORY IMAGE */
+
+    .storyGrid img {
+      width: 100%;
+
+      height: 520px;
+
+      object-fit: cover;
+
+      display: block;
+
+      border-radius: 2px;
+
+      box-shadow:
+        0 15px 35px rgba(80, 60, 40, 0.12);
+    }
+
+    .storyText {
+      text-align: center;
+
+      max-width: 650px;
+
+      margin: auto;
+    }
+
+    .storyText p {
+      line-height: 2;
+
+      color: #65574d;
+
+      font-size: 17px;
+    }
+
+    /* =========================
+       TIMELINE
+       ========================= */
+
+    .timeline {
+      max-width: 650px;
+
+      margin: 50px auto 0;
+
+      border-left:
+        1px solid #cbb8a5;
+
+      padding-left: 35px;
+    }
+
+    .event {
+      position: relative;
+
+      padding: 0 0 45px;
+
+      font-size: 18px;
+
+      color: #493d35;
+    }
+
+    .event::before {
+      content: "";
+
+      position: absolute;
+
+      left: -41px;
+      top: 4px;
+
+      width: 11px;
+      height: 11px;
+
+      border-radius: 50%;
+
+      background: #8b6f5a;
+    }
+
+    .time {
+      color: #9a7c63;
+
+      font-size: 14px;
+
+      letter-spacing: 2px;
+
+      margin-bottom: 8px;
+    }
+
+    .small {
+      margin-top: 6px;
+
+      font-size: 14px;
+
+      color: #89786b;
+    }
+
+    /* =========================
+       GALLERY
+       ========================= */
+
+    .gallery {
+      max-width: 1100px;
+
+      margin: 55px auto 0;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+      gap: 20px;
+
+      align-items: start;
+    }
+
+    .gallery img {
+      width: 100%;
+
+      height: 520px;
+
+      object-fit: cover;
+
+      display: block;
+
+      border-radius: 2px;
+
+      box-shadow:
+        0 15px 35px rgba(80, 60, 40, 0.12);
+    }
+
+    .gallery img:last-child {
+      height: 440px;
+
+      margin-top: 80px;
+    }
+
+    /* =========================
+       LOCATION CARD
+       ========================= */
+
+    .card {
+      max-width: 700px;
+
+      margin: 0 auto;
+
+      padding: 60px 30px;
+
+      text-align: center;
+
+      background:
+        rgba(255, 250, 245, 0.75);
+
+      border:
+        1px solid #d6c4b1;
+    }
+
+    /* =========================
+       FOOTER
+       ========================= */
+
+    footer {
+      padding: 70px 20px;
+
+      text-align: center;
+
+      background: #493d35;
+
+      color: #f8f3ed;
+    }
+
+    .footerNames {
+      font-size: 34px;
+
+      margin-bottom: 20px;
+    }
+
+    footer .divider {
+      color: #d6c4b1;
+
+      margin: 15px 0;
+    }
+
+    /* =========================
+       ANIMATION
+       ========================= */
+
+    .reveal {
+      opacity: 0;
+
+      transform: translateY(35px);
+
+      transition:
+        opacity 0.9s ease,
+        transform 0.9s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+
+      transform: translateY(0);
+    }
+
+    @keyframes fadeUp {
+
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media (max-width: 700px) {
+
+      section {
+        padding: 75px 18px;
+      }
+
+      .count {
+        gap: 20px;
+      }
+
+      .num {
+        font-size: 30px;
+      }
+
+      .timeline {
+        padding-left: 28px;
+      }
+
+      .event::before {
+        left: -34px;
+      }
+
+      .env {
+        width: 230px;
+        height: 160px;
+      }
+
+      .flap {
+        border-left-width: 114px;
+        border-right-width: 114px;
+        border-top-width: 80px;
+      }
+
+      /* Story */
+
+      .storyGrid {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+      }
+
+      .storyGrid img {
+        width: 100%;
+
+        height: 400px;
+      }
+
+      /* Gallery */
+
+      .gallery {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+
+        margin-top: 35px;
+      }
+
+      .gallery img {
+        width: 100%;
+
+        height: 450px;
+      }
+
+      .gallery img:last-child {
+        height: 450px;
+
+        margin-top: 0;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <!-- =========================
+       OPENING SCREEN
+       ========================= -->
+
+  <div id="gate">
+
+    <div class="wrap">
+
+      <div class="env">
+
+        <span class="orn a">❦</span>
+        <span class="orn b">❧</span>
+
+        <div class="flap"></div>
+
+        <div class="seal">
+          L &amp; V
+        </div>
+
+      </div>
+
+      <h1>
+        Լիլիթ &amp; Վոլոդյա
+      </h1>
+
+      <div class="date">
+        10 · 10 · 2026
+      </div>
+
+      <button onclick="openInvitation()">
+        ԲԱՑԵԼ ՀՐԱՎԵՐԸ
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       HERO
+       ========================= -->
+
+  <div class="hero">
+
+    <div class="heroText">
+
+      <div class="kicker">
+        ՄԵՐ ՀԱՏՈՒԿ ՕՐԸ
+      </div>
+
+      <div class="names">
+        Լիլիթ &amp; Վոլոդյա
+      </div>
+
+      <div>
+        ❦
+      </div>
+
+      <div class="heroDate">
+        10 · 10 · 2026
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       INVITATION
+       ========================= -->
+
+  <section class="center reveal">
+
+    <div class="kicker">
+      ՍԻՐՈՎ ՀՐԱՎԻՐՈՒՄ ԵՆՔ
+    </div>
+
+    <h2>
+      Մեր հարսանիքին
+    </h2>
+
+    <p class="intro">
+      Սիրելի՛ ընկերներ և բարեկամներ,<br>
+      Սրտանց հրավիրում ենք Ձեզ մեզ հետ միասին տոնելու
+      մեր կյանքի ամենակարևոր և գեղեցիկ օրը՝ մեր հարսանիքը!
+    </p>
+
+    <div class="divider">
+      ❦
+    </div>
+
+    <!-- Countdown -->
+
+    <div class="count">
+
+      <div>
+        <span class="num" id="d">—</span>
+        <span class="lbl">ՕՐ</span>
+      </div>
+
+      <div>
+        <span class="num" id="h">—</span>
+        <span class="lbl">ԺԱՄ</span>
+      </div>
+
+      <div>
+        <span class="num" id="m">—</span>
+        <span class="lbl">ՐՈՊԵ</span>
+      </div>
+
+      <div>
+        <span class="num" id="s">—</span>
+        <span class="lbl">ՎԱՅՐԿՅԱՆ</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       STORY + PHOTO-2
+       ========================= -->
+
+  <section class="story">
+
+    <div class="storyGrid reveal">
+
+      <img
+        src="photo-2.jpg"
+        alt="Լիլիթ և Վոլոդյա"
+      >
+
+      <div class="storyText">
+
+        <div class="kicker">
+          ՄԻ ԳԵՂԵՑԻԿ ՕՐ
+        </div>
+
+        <h2>
+          Եվ այս օրը կդառնա հիշողություն
+        </h2>
+
+        <p>
+          Երբ երկու սրտեր ընտրում են քայլել նույն ճանապարհով,
+          ծնվում է մի նոր պատմություն։ Մենք ուզում ենք այդ
+          պատմության ամենագեղեցիկ էջը կիսել Ձեզ հետ։
+        </p>
+
+        <div class="divider">
+          ✾
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       TIMELINE
+       ========================= -->
+
+  <section class="reveal">
+
+    <div class="center">
+
+      <div class="kicker">
+        ՕՐՎԱ ԸՆԹԱՑՔԸ
+      </div>
+
+      <h2>
+        Մեր օրը
+      </h2>
+
+    </div>
+
+    <div class="timeline">
+
+      <div class="event">
+
+        <div class="time">
+          10:00
+        </div>
+
+        <div>
+          Փեսայի տուն
+        </div>
+
+      </div>
+
+
+      <div class="event">
+
+        <div class="time">
+          11:00
+        </div>
+
+        <div>
+          Հարսի տուն
+        </div>
+
+      </div>
+
+
+      <div class="event">
+
+        <div class="time">
+          13:00
+        </div>
+
+        <div>
+
+          Պսակադրություն
+
+          <div class="small">
+            Կեչառիս, Ծաղկաձոր
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="event">
+
+        <div class="time">
+          15:30
+        </div>
+
+        <div>
+          Փեսայի տուն
+        </div>
+
+      </div>
+
+
+      <div class="event">
+
+        <div class="time">
+          17:00
+        </div>
+
+        <div>
+          Հարսանյաց սրահ՝ Սաֆարի հոլ
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       GALLERY
+       ========================= -->
+
+  <section class="reveal">
+
+    <div class="center">
+
+      <div class="kicker">
+        ՄԵՐ ՓՈՔՐԻԿ ԱԼԲՈՄԸ
+      </div>
+
+      <h2>
+        Սիրո լուսանկարները
+      </h2>
+
+    </div>
+
+
+    <div class="gallery">
+
+      <img
+        src="photo-1.jpg"
+        alt="Լիլիթ և Վոլոդյա"
+      >
+
+      <img
+        src="photo-2.jpg"
+        alt="Լիլիթ և Վոլոդյա"
+      >
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       LOCATION + SONG
+       ========================= -->
+
+  <section class="story">
+
+    <div class="card reveal">
+
+      <div class="kicker">
+        ՀԱՆԴԻՊԵՆՔ ԱՅՆՏԵՂ
+      </div>
+
+      <h2>
+        Սաֆարի հոլ
+      </h2>
+
+      <p>
+        ք. Չարենցավան, Կարեն Դեմիրճյան հրապարակ, 3
+      </p>
+
+      <a
+        class="btn"
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://www.google.com/maps/search/?api=1&query=Safari+Hall%2C+Charentsavan%2C+Armenia"
+      >
+        Բացել քարտեզը
+      </a>
+
+
+      <div class="divider">
+        ❦
+      </div>
+
+
+      <div class="kicker">
+        ՄԵՐ ԵՐԳԸ
+      </div>
+
+      <p>
+        Bruno Mars — <i>Marry You</i>
+      </p>
+
+      <a
+        class="btn"
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https:/www.youtube.com/watch?v=dElRVQFqj-k"
+      >
+        Լսել երգը ♪
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+       ========================= -->
+
+  <footer>
+
+    <div class="footerNames">
+      Լիլիթ &amp; Վոլոդյա
+    </div>
+
+    <div class="divider">
+      ❦
+    </div>
+
+    <div>
+      10 · 10 · 2026
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+       ========================= -->
+
+  <script>
+
+    /* Open invitation */
+
+    function openInvitation() {
+
+      document
+        .getElementById("gate")
+        .classList
+        .add("open");
+
+      document.body.style.overflow = "auto";
+
+    }
+
+
+    /* Prevent scrolling before opening */
+
+    document.body.style.overflow = "hidden";
+
+
+    /* Countdown */
+
+    const target =
+      new Date("2026-10-10T13:30:00+04:00");
+
+
+    function tick() {
+
+      let remaining =
+        Math.max(
+          0,
+          target.getTime() - Date.now()
+        );
+
+
+      let totalSeconds =
+        Math.floor(
+          remaining / 1000
+        );
+
+
+      let days =
+        Math.floor(
+          totalSeconds / 86400
+        );
+
+
+      totalSeconds %= 86400;
+
+
+      let hours =
+        Math.floor(
+          totalSeconds / 3600
+        );
+
+
+      totalSeconds %= 3600;
+
+
+      let minutes =
+        Math.floor(
+          totalSeconds / 60
+        );
+
+
+      let seconds =
+        totalSeconds % 60;
+
+
+      document
+        .getElementById("d")
+        .textContent = days;
+
+
+      document
+        .getElementById("h")
+        .textContent =
+          String(hours)
+            .padStart(2, "0");
+
+
+      document
+        .getElementById("m")
+        .textContent =
+          String(minutes)
+            .padStart(2, "0");
+
+
+      document
+        .getElementById("s")
+        .textContent =
+          String(seconds)
+            .padStart(2, "0");
+
+    }
+
+
+    tick();
+
+    setInterval(
+      tick,
+      1000
+    );
+
+
+    /* Scroll animations */
+
+    const observer =
+      new IntersectionObserver(
+
+        entries => {
+
+          entries.forEach(
+            entry => {
+
+              if (
+                entry.isIntersecting
+              ) {
+
+                entry.target
+                  .classList
+                  .add("show");
+
+              }
+
+            }
+          );
+
+        },
+
+        {
+          threshold: 0.12
+        }
+
+      );
+
+
+    document
+      .querySelectorAll(".reveal")
+      .forEach(
+        element => {
+          observer.observe(element);
+        }
+      );
+
+  </script>
+
+</body>
+</html>
+
+
