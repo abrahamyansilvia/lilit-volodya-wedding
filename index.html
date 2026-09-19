@@ -615,6 +615,11 @@
 </head>
 
 <body>
+  <body>
+
+  <audio id="weddingMusic" loop>
+    <source src="Bruno Mars - Marry Me.mp3" type="audio/mpeg">
+  </audio>
 
 
   <!-- =========================
@@ -942,24 +947,6 @@
         ❦
       </div>
 
-
-      <div class="kicker">
-        ՄԵՐ ԵՐԳԸ
-      </div>
-
-      <p>
-        Bruno Mars — <i>Marry You</i>
-      </p>
-
-      <a
-        class="btn"
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https:/www.youtube.com/watch?v=dElRVQFqj-k"
-      >
-        Լսել երգը ♪
-      </a>
-
     </div>
 
   </section>
@@ -996,16 +983,20 @@
 
     function openInvitation() {
 
-      document
-        .getElementById("gate")
-        .classList
-        .add("open");
+  document
+    .getElementById("gate")
+    .classList
+    .add("open");
 
-      document.body.style.overflow = "auto";
+  document.body.style.overflow = "auto";
 
-    }
+  const music = document.getElementById("weddingMusic");
 
+  music.play().catch(error => {
+    console.log("Music playback failed:", error);
+  });
 
+}
     /* Prevent scrolling before opening */
 
     document.body.style.overflow = "hidden";
